@@ -1,8 +1,0 @@
-RewriteEngine On
-
-# API endpoint dengan pencarian
-RewriteRule ^api/movies/?$ movie-api.php [L,QSA]
-RewriteRule ^api/movies/search/([^/]+)/?$ movie-api.php?s=$1 [L,QSA]
-
-# Streaming endpoint
-RewriteRule ^watch/(.+)$ stream.php?file=$1 [L,QSA]
