@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movapis - API Ecosystem</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Gradient Background */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
+        }
+
+        .bg-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 45%);
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #222;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            letter-spacing: -1px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 25px;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 120px 5% 80px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -4px;
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .gray-text {
+            color: #444;
+            display: block;
+            font-size: 27px;
+            text-decoration: underline;
+        }
+
+        p.subtitle {
+            color: #888;
+            max-width: 550px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #ccc;
+        }
+
+        .btn-secondary {
+            border: 1px solid #333;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            border-color: #666;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Grid Cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 5%;
+        }
+
+        .card {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid #222;
+            padding: 40px;
+            border-radius: 12px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: #444;
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            color: #fff;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            border-top: 1px solid #222;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .footer-content p {
+            font-size: 13px;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        .footer-highlight {
+            color: #888;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            h1 { letter-spacing: -2px; }
+            .btn-group { flex-direction: column; padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-layer">
+        <div class="bg-glow"></div>
+    </div>
+
+    <nav>
+        <div class="logo-container">
+            <div class="logo-mark"></div>
+            <span class="logo-text">MOVAPIS</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Documentation</a>
+            <a href="#">API Reference</a>
+            <a href="https://github.com/Denzetye">GitHub</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Next Generation API <br><span class="gray-text">Make Is Usefull.</span></h1>
+        <p class="subtitle">The Next Level Of Most Free Plan APIs</p>
+        <div class="btn-group">
+            <a href="#" class="btn btn-primary" style="text-align: center; align-items: center;">Coba Sekarang, Gratis!</a>
+            <a href="#" class="btn btn-secondary">
+                <i data-lucide="Wifi" style="width:16px; text-align: center;"></i> Lihat Statistik Api
+            </a>
+        </div>
+    </header>
+
+    <main class="features">
+        <div class="card">
+            <i data-lucide="zap"></i>
+            <h3>High Performance</h3>
+            <p>API movapis telah melalui proses optimalisasi</p>
+        </div>
+        <div class="card">
+            <i data-lucide="shield-check"></i>
+            <h3>Iron Security</h3>
+            <p>Sistem keamanan yang divalidasi oleh SingleWhiteTeam.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>movapis adalah api yang menyediakan kebutuhan untuk website maker.</p>
+            <p class="footer-highlight">Disempurnakan lagi oleh SingleWhiteTeam. Admin: @.lb</p>
+            <p style="margin-top: 20px; opacity: 0.5;">© 2026 All Right Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Nyalain icon lucide
+        lucide.createIcons();
+    </script>
+</body>
+</html>
